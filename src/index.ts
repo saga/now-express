@@ -1,5 +1,5 @@
 import { json, urlencoded } from "body-parser";
-import * as express from "express";
+import express from "express";
 
 const app = express();
 
