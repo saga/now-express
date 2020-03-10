@@ -37,8 +37,8 @@ pool.query('SELECT 1 + 1 AS solution', (error, results, fields) => {
     console.log('The solution is: ', results[0].solution);
 });
 
+const port = process.env.PORT ? Number(process.env.PORT): 3000;
 
-
-app.listen(process.env.PORT || 3000, '0.0.0.0', () => {
+app.listen(port, '0.0.0.0', () => {
     console.log("server start to monitor 3000");
 });
