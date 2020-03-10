@@ -30,10 +30,10 @@ pool.query('SELECT 1 + 1 AS solution', (error, results, fields) => {
     console.log('The solution is: ', results[0].solution);
 });
 
-const timeNow = new Date();
-let sql = `INSERT INTO logs(time, content)
-           VALUES(${timeNow}, "aabbccdd")`;
-pool.query(sql);
+// const timeNow = new Date();
+// let sql = `INSERT INTO logs(time, content)
+//            VALUES(${timeNow}, "aabbccdd")`;
+// pool.query(sql);
 
 app.listen(3000, () => {
     console.log("server start to monitor 3000");
