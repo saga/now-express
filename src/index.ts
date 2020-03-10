@@ -22,12 +22,7 @@ const pool = mysql.createPool({
     user: "sagasw@ddddd",
     password: process.env.MYSQL_PASSWORD,
     database: "blog",
-    port: 3306,
-    ssl: {
-        // DO NOT DO THIS
-        // set up your ca correctly to trust the connection
-        rejectUnauthorized: false
-      }
+    port: 3306
 });
 
 pool.query('SELECT 1 + 1 AS solution', (error, results, fields) => {
