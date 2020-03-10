@@ -4,7 +4,7 @@ import * as express from "express";
 import * as helmet from "helmet";
 import * as path from "path";
 
-const app: express.Application = express();
+const app = express();
 
 app.use(helmet());
 app.use(json());
@@ -19,6 +19,6 @@ app.get('/api', (req, response) => {
     response.send('Hello world!');
 });
 
-app.listen(4200, () => {
-    console.log("server start to monitor 4200");
+app.listen(3000, () => {
+    console.log("server start to monitor 3000");
 });
