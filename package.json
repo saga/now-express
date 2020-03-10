@@ -33,7 +33,6 @@
         "@types/jsonwebtoken": "8.3.8",
         "@types/uuid": "7.0.0",
         "@types/mysql": "2.15.9",
-        "codelyzer": "^5.2.1",
         "concurrently": "5.1.0"
     }
 }

@@ -30,10 +30,15 @@ const pool = mysql.createPool({
       }
 });
 
-pool.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+pool.query('SELECT 1 + 1 AS solution', (error, results, fields) => {
     if (error) throw error;
     console.log('The solution is: ', results[0].solution);
 });
+
+const timeNow = new Date();
+let sql = `INSERT INTO logs(time, content)
+           VALUES(${timeNow}, "aabbccdd")`;
+pool.query(sql);
 
 app.listen(3000, () => {
     console.log("server start to monitor 3000");
