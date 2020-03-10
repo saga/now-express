@@ -14,13 +14,14 @@ app.set('trust proxy', 1);
 
 
 const pool = mysql.createPool({
-    connectionLimit: 25,
+    connectionLimit: 12,
     host: "ddddd.mysql.database.azure.com",
     user: "sagasw@ddddd",
     password: process.env.MYSQL_PASSWORD,
     database: "blog",
     port: 3306,
     connectTimeout: 120000,
+    acquireTimeout: 120000,
     ssl: {
         rejectUnauthorized: false
       }
