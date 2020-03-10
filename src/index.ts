@@ -22,12 +22,11 @@ const pool = mysql.createConnection({
     connectTimeout: 120000
 });
 
-app.get('/', (req, response) => {
+app.get('/', async (req, response) => {
     const timeNow = new Date();
-
     let sql = `INSERT INTO logs(content)
            VALUES("got date time: ${timeNow.toUTCString()}")`;
-    pool.query(sql);
+    await pool.query(sql);
 
     response.send('Hello world! ' + sql);
 });
