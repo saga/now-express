@@ -4,7 +4,6 @@ import { json, urlencoded } from "body-parser";
 import express from "express";
 import compression from "compression";
 import helmet from "helmet";
-import fs from "fs";
 import cors from "cors";
 import { Database } from "./Database";
 

@@ -3,6 +3,7 @@ import mysql from 'mysql';
 
 export class Database {
     private pool: mysql.Pool;
+    private closed?: boolean;
 
     init() {
         this.pool = mysql.createPool({
@@ -25,6 +26,19 @@ export class Database {
                 return;
             }
             await conn.query(sql);
+
+            // release the connection in the end
+            conn.release();
+        });
+    }
+
+    closeAllConnectionsInPool() {
+        this.pool.end((err) => {
+            if (err) {
+                console.error(err);
+            }
+            // all connections in the pool have ended
+            this.closed = true;
         });
     }
 }
