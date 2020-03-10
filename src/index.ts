@@ -13,13 +13,6 @@ app.use(compression());
 app.use(urlencoded({ extended: true }));
 app.set('trust proxy', 1);
 
-const access = fs.createWriteStream('/node.access.log', { flags: 'a' });
-const error = fs.createWriteStream('/node.error.log', { flags: 'a' });
-
-// redirect stdout / stderr
-process.stdout.pipe(access);
-process.stderr.pipe(error);
-
 const pool = mysql.createPool({
     connectionLimit: 12,
     host: "ddddd.mysql.database.azure.com",
