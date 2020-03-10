@@ -26,7 +26,7 @@ app.get('/', (req, response) => {
     const timeNow = new Date();
 
     let sql = `INSERT INTO logs(content)
-           VALUES("aabbccdd")`;
+           VALUES("got date time: ${timeNow.toUTCString()}")`;
     pool.query(sql);
 
     response.send('Hello world!');
