@@ -13,8 +13,7 @@ app.use(compression());
 app.use(urlencoded({ extended: true }));
 app.set('trust proxy', 1);
 
-const pool = mysql.createPool({
-    connectionLimit: 12,
+const pool = mysql.createConnection({
     host: "ddddd.mysql.database.azure.com",
     user: "sagasw@ddddd",
     password: process.env.MYSQL_PASSWORD,
@@ -25,9 +24,6 @@ const pool = mysql.createPool({
         rejectUnauthorized: false
       }
 });
-pool.on('acquire', function (connection) {
-    console.log('Connection %d acquired', connection.threadId);
-  });
 
 app.get('/', (req, response) => {
     const timeNow = new Date();
