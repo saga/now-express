@@ -19,10 +19,7 @@ const pool = mysql.createConnection({
     password: process.env.MYSQL_PASSWORD,
     database: "blog",
     port: 3306,
-    connectTimeout: 120000,
-    ssl: {
-        rejectUnauthorized: false
-      }
+    connectTimeout: 120000
 });
 
 app.get('/', (req, response) => {
