@@ -4,9 +4,9 @@ import { json, urlencoded } from "body-parser";
 import express from "express";
 import compression from "compression";
 import helmet from "helmet";
-import mysql from 'mysql';
 import fs from "fs";
 import cors from "cors";
+import { Database } from "./Database";
 
 const app = express();
 
@@ -17,21 +17,15 @@ app.use(compression());
 app.use(urlencoded({ extended: true }));
 app.set('trust proxy', 1);
 
-const pool = mysql.createConnection({
-    host: "ddddd.mysql.database.azure.com",
-    user: "sagasw@ddddd",
-    password: process.env.MYSQL_PASSWORD,
-    database: "blog",
-    port: 3306,
-    connectTimeout: 60000
-});
+const dbHelper = new Database();
+dbHelper.init();
 
 app.get('/', async (req, response) => {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const timeNow = new Date().toUTCString();
     let sql = `INSERT INTO logs(content)
-           VALUES("got date time: ${timeNow} from ${ip}")`;
-    await pool.query(sql);
+        VALUES("got date time: ${timeNow} from ${ip}")`;
+    await dbHelper.insert(sql);
     response.send('Hello world! ' + sql);
 });
 
