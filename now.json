@@ -1,12 +1,18 @@
 {
     "version": 2,
     "builds": [
-        { "src": "src/index.ts", "use": "@now/node" }
-      ],
-      "routes": [
         {
-          "src": "/(.*)",
-          "dest": "src/index.ts"
+            "src": "src/index.ts",
+            "use": "@now/node"
         }
-      ]
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "src/index.ts"
+        }
+    ],
+    "env": {
+        "MYSQL_PASSWORD": "@mysql_password"
+    }
 }

@@ -1,7 +1,8 @@
 import { json, urlencoded } from "body-parser";
 import express from "express";
-import * as compression from "compression";
-import * as helmet from "helmet";
+import compression from "compression";
+import helmet from "helmet";
+import mysql from 'mysql';
 
 const app = express();
 
@@ -14,6 +15,14 @@ app.set('trust proxy', 1);
 app.get('/', (req, response) => {
     response.send('Hello world!');
 });
+
+const conn = mysql.createConnection({host: "ddddd.mysql.database.azure.com",
+    user: "sagasw@ddddd",
+    password: process.env.MYSQL_PASSWORD,
+    database: "blog",
+    port: 3306
+});
+conn.connect();
 
 app.listen(3000, () => {
     console.log("server start to monitor 3000");
