@@ -20,7 +20,12 @@ const conn = mysql.createConnection({host: "ddddd.mysql.database.azure.com",
     user: "sagasw@ddddd",
     password: process.env.MYSQL_PASSWORD,
     database: "blog",
-    port: 3306
+    port: 3306,
+    ssl: {
+        // DO NOT DO THIS
+        // set up your ca correctly to trust the connection
+        rejectUnauthorized: false
+      }
 });
 conn.connect();
 
