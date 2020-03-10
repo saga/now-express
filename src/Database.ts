@@ -19,16 +19,43 @@ export class Database {
         });
     }
 
+    async insertList(sql, values) {
+        //const sql = "INSERT INTO Test (name, email, n) VALUES ?";
+        //const values = [
+        //     ['demian', 'demian@gmail.com', 1],
+        //     ['john', 'john@gmail.com', 2],
+        //     ['mark', 'mark@gmail.com', 3],
+        //     ['pete', 'pete@gmail.com', 4]
+        // ];
+        this.pool.getConnection(async (err, conn) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            try {
+                await conn.query(sql, [values]);
+            } catch (exception) {
+                console.error(exception);
+            } finally{
+                conn.release();
+            }
+        });
+    }
+
     async insert(sql: string) {
         this.pool.getConnection(async (err, conn) => {
             if (err) {
                 console.error(err);
                 return;
             }
-            await conn.query(sql);
-
-            // release the connection in the end
-            conn.release();
+            try {
+                await conn.query(sql);
+            } catch (exception) {
+                console.error(exception);
+            }
+            finally{
+                conn.release();
+            }
         });
     }
 
