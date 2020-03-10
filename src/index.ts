@@ -16,7 +16,9 @@ app.get('/', (req, response) => {
     response.send('Hello world!');
 });
 
-const conn = mysql.createConnection({host: "ddddd.mysql.database.azure.com",
+const pool = mysql.createPool({
+    connectionLimit: 25,
+    host: "ddddd.mysql.database.azure.com",
     user: "sagasw@ddddd",
     password: process.env.MYSQL_PASSWORD,
     database: "blog",
@@ -27,7 +29,11 @@ const conn = mysql.createConnection({host: "ddddd.mysql.database.azure.com",
         rejectUnauthorized: false
       }
 });
-conn.connect();
+
+pool.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+    if (error) throw error;
+    console.log('The solution is: ', results[0].solution);
+});
 
 app.listen(3000, () => {
     console.log("server start to monitor 3000");
