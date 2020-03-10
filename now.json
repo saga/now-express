@@ -1,9 +1,7 @@
 {
     "version": 2,
-    "name": "express",
     "builds": [
-        { "src": "src/index.ts", "use": "@now/node" },
-        { "src": "package.json", "use": "@now/next" }
+        { "src": "src/index.ts", "use": "@now/node" }
       ],
       "routes": [
         {
