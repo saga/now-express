@@ -1,16 +1,6 @@
 {
   "version": 2,
-  "builds": [{ "src": "/dist/index.js", "use": "@now/node-server" }],
-  "routes": [
-    {
-      "src": "/users",
-      "dest": "/dist/index.js",
-      "methods": ["GET"]
-    },
-    {
-      "src": "/user",
-      "dest": "/dist/index.js",
-      "methods": ["POST"]
-    }
-  ]
+  "name": "express",
+  "builds": [{ "src": "src/**/*.ts", "use": "@now/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/src/$1" }]
 }
