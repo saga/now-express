@@ -3,6 +3,7 @@ import express from "express";
 import compression from "compression";
 import helmet from "helmet";
 import mysql from 'mysql';
+import fs from "fs";
 
 const app = express();
 
@@ -12,6 +13,12 @@ app.use(compression());
 app.use(urlencoded({ extended: true }));
 app.set('trust proxy', 1);
 
+const access = fs.createWriteStream('/node.access.log', { flags: 'a' })
+      , error = fs.createWriteStream('/node.error.log', { flags: 'a' });
+
+// redirect stdout / stderr
+process.stdout.pipe(access);
+process.stderr.pipe(error);
 
 const pool = mysql.createPool({
     connectionLimit: 12,
@@ -26,6 +33,9 @@ const pool = mysql.createPool({
         rejectUnauthorized: false
       }
 });
+pool.on('acquire', function (connection) {
+    console.log('Connection %d acquired', connection.threadId);
+  });
 
 app.get('/', (req, response) => {
     const timeNow = new Date();
