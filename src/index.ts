@@ -28,7 +28,6 @@ const pool = mysql.createPool({
     database: "blog",
     port: 3306,
     connectTimeout: 120000,
-    acquireTimeout: 120000,
     ssl: {
         rejectUnauthorized: false
       }
