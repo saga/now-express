@@ -23,9 +23,9 @@ const pool = mysql.createConnection({
 });
 
 app.get('/', async (req, response) => {
-    const timeNow = new Date();
+    const timeNow = new Date().toUTCString();
     let sql = `INSERT INTO logs(content)
-           VALUES("got date time: ${timeNow.toUTCString()}")`;
+           VALUES("got date time: ${timeNow}")`;
     await pool.query(sql);
 
     response.send('Hello world! ' + sql);
