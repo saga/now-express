@@ -39,6 +39,6 @@ pool.query('SELECT 1 + 1 AS solution', (error, results, fields) => {
 
 
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, '0.0.0.0', () => {
     console.log("server start to monitor 3000");
 });
