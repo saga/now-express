@@ -2,11 +2,13 @@
     "version": 2,
     "name": "express",
     "builds": [
+        { "src": "src/index.ts", "use": "@now/node" },
+        { "src": "package.json", "use": "@now/next" }
+      ],
+      "routes": [
         {
-            "src": "src/**/*.ts",
-            "use": "@now/node"
+          "src": "/(.*)",
+          "dest": "/src/index.ts"
         }
-    ],
-    "routes": [{"src": "/(.*)", "dest": "/dist/index.js"}
-    ]
+      ]
 }
