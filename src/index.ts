@@ -29,7 +29,7 @@ app.get('/', (req, response) => {
            VALUES("got date time: ${timeNow.toUTCString()}")`;
     pool.query(sql);
 
-    response.send('Hello world!');
+    response.send('Hello world! ' + sql);
 });
 
 
