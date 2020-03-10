@@ -19,7 +19,9 @@ const pool = mysql.createPool({
     user: "sagasw@ddddd",
     password: process.env.MYSQL_PASSWORD,
     database: "blog",
-    port: 3306
+    port: 3306,
+    connectTimeout: 120000,
+    ssl: "Amazon RDS"
 });
 
 app.get('/', (req, response) => {
