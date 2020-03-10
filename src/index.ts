@@ -4,10 +4,13 @@ import compression from "compression";
 import helmet from "helmet";
 import mysql from 'mysql';
 import fs from "fs";
+import cors from "cors";
 
 const app = express();
 
 app.use(helmet());
+app.use(cors());
+
 app.use(json());
 app.use(compression());
 app.use(urlencoded({ extended: true }));
