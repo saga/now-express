@@ -11,7 +11,7 @@ export class Database {
             acquireTimeout: 60000,
             // below are for connection
             host: "ddddd.mysql.database.azure.com",
-            user: "sagasw@ddddd",
+            user: process.env.MYSQL_USER,
             password: process.env.MYSQL_PASSWORD,
             database: "blog",
             port: 3306,
