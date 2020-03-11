@@ -1,6 +1,6 @@
 {
     "name": "now-express",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -9,7 +9,7 @@
         "build": "tsc"
     },
     "keywords": [],
-    "author": "William Imoh",
+    "author": "sagasw",
     "license": "MIT",
     "dependencies": {
         "core-js": "^2.6.11",
